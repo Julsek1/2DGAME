@@ -24,7 +24,6 @@ public class Bouncer : MonoBehaviour
             collision.GetComponent<Movement>().RestoreJumps();
             collision.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             collision.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 200);
-
         }
     }
 }
