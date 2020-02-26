@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Cursor : MonoBehaviour
+public class MenuCursor : MonoBehaviour
 {
     [SerializeField] Button[] levels;
     [SerializeField] Sprite[] sprites;

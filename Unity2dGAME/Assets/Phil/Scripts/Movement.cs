@@ -9,9 +9,10 @@ public class Movement : MonoBehaviour
     Rigidbody2D rb;
 
     //Movement
-    float MoveSpeed;
+    [SerializeField] float moveSpeed;
 
     //Jump
+    [SerializeField] float jumpHeight;
     bool isJumping;
     int numberOfJumps;
     int maxJumps;
@@ -25,7 +26,6 @@ public class Movement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         isJumping = false;
-        MoveSpeed = 1.25f;
         maxJumps = 2;
         numberOfJumps = maxJumps;
         isOnWall = false;
@@ -35,20 +35,20 @@ public class Movement : MonoBehaviour
     void Update()
     {
         //visual indication of the number of jumps left
-        if (numberOfJumps == 2)
-        {
-            this.GetComponent<SpriteRenderer>().color = Color.magenta;
-        }
+        //if (numberOfJumps == 2)
+        //{
+        //    this.GetComponent<SpriteRenderer>().color = Color.magenta;
+        //}
 
-        else if (numberOfJumps == 1)
-        {
-            this.GetComponent<SpriteRenderer>().color = Color.red;
-        }
+        //else if (numberOfJumps == 1)
+        //{
+        //    this.GetComponent<SpriteRenderer>().color = Color.red;
+        //}
 
-        else
-        {
-            this.GetComponent<SpriteRenderer>().color = Color.blue;
-        }
+        //else
+        //{
+        //    this.GetComponent<SpriteRenderer>().color = Color.blue;
+        //}
 
         Move();
 
@@ -75,7 +75,21 @@ public class Movement : MonoBehaviour
     private void Move()
     {
         float movement = Input.GetAxis("Horizontal");
-        rb.velocity = new Vector2(movement * MoveSpeed, rb.velocity.y);
+        if (movement != 0)
+        {
+            GetComponent<SpriteRenderer>().flipX = (movement < 0);
+        }
+
+        if (isJumping)
+        {
+            rb.velocity = new Vector2(movement * moveSpeed/2, rb.velocity.y);
+        }
+
+        else
+        {
+            rb.velocity = new Vector2(movement * moveSpeed, rb.velocity.y);
+        }
+
     }
 
     private void Jump()
@@ -93,8 +107,9 @@ public class Movement : MonoBehaviour
         {
             numberOfJumps--;
             isJumping = false;
-            rb.velocity = new Vector2(rb.velocity.x, 0f);
-            rb.AddForce(new Vector2(0f, 125f));
+            //rb.velocity = new Vector2(/*rb.velocity.x*/0f, 0f);
+            rb.velocity = Vector2.zero;
+            rb.AddForce(new Vector2(0f, jumpHeight));
         }
 
     }
