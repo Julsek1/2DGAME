@@ -8,6 +8,9 @@ public class Movement : MonoBehaviour
     //Character
     Rigidbody2D rb;
 
+    //Controls
+    Controls controls = null;
+
     //Movement
     [SerializeField] float moveSpeed;
 
@@ -21,9 +24,14 @@ public class Movement : MonoBehaviour
     bool isOnWall;
     int wallJumpDirection;
 
+    private void Awake()
+    {
+        controls = new Controls();
+    }
     // Start is called before the first frame update
     void Start()
     {
+        controls.Player.Enable();
         rb = GetComponent<Rigidbody2D>();
         isJumping = false;
         maxJumps = 2;
@@ -52,9 +60,9 @@ public class Movement : MonoBehaviour
 
         Move();
 
-        if (Input.GetButtonDown("Jump"))
+        if (controls.Player.Jump.triggered)
         {
-            isJumping = (numberOfJumps > 0) ? true : false;
+            isJumping = (numberOfJumps > 0);
         }
     }
 
@@ -65,16 +73,17 @@ public class Movement : MonoBehaviour
             Jump();
         }
 
-        ////better jump?
-        //if (rb.velocity.y < 0 && !Input.GetButton("Jump"))
-        //{
-        //    rb.velocity += Vector2.up * Physics2D.gravity.y * 1.5f * Time.deltaTime;
-        //}
+        //    ////better jump?
+        //    //if (rb.velocity.y < 0 && !Input.GetButton("Jump"))
+        //    //{
+        //    //    rb.velocity += Vector2.up * Physics2D.gravity.y * 1.5f * Time.deltaTime;
+        //    //}
     }
 
     private void Move()
     {
-        float movement = Input.GetAxis("Horizontal");
+        float movement = controls.Player.Move.ReadValue<float>();
+        //float movement = Input.GetAxis("Horizontal");
         if (movement != 0)
         {
             GetComponent<SpriteRenderer>().flipX = (movement < 0);
@@ -82,7 +91,7 @@ public class Movement : MonoBehaviour
 
         if (isJumping)
         {
-            rb.velocity = new Vector2(movement * moveSpeed/2, rb.velocity.y);
+            rb.velocity = new Vector2(movement * moveSpeed / 2, rb.velocity.y);
         }
 
         else
@@ -92,24 +101,30 @@ public class Movement : MonoBehaviour
 
     }
 
-    private void Jump()
+    public void Jump()
     {
-        //wall jump
-        if (isOnWall)
-        {
-            isOnWall = false;
-            rb.velocity = Vector2.zero;
-            rb.AddForce(new Vector2(150f * wallJumpDirection, 200f));
-        }
+        //isJumping = (numberOfJumps > 0);
 
-        //normal jump
-        else
+        if (isJumping)
         {
+            ////wall jump
+            //if (isOnWall)
+            //{
+            //    isOnWall = false;
+            //    rb.velocity = Vector2.zero;
+            //    rb.AddForce(new Vector2(150f * wallJumpDirection, 200f));
+            //}
+
+            //normal jump
+            //else
+            //{
             numberOfJumps--;
             isJumping = false;
             //rb.velocity = new Vector2(/*rb.velocity.x*/0f, 0f);
             rb.velocity = Vector2.zero;
             rb.AddForce(new Vector2(0f, jumpHeight));
+            //}
+            Debug.Log("Once");
         }
 
     }

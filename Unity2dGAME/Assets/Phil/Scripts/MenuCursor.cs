@@ -15,9 +15,15 @@ public class MenuCursor : MonoBehaviour
 
     int levelIndex;
 
+    Controls controls;
+    private void Awake()
+    {
+        controls = new Controls();
+    }
     // Start is called before the first frame update
     void Start()
     {
+        controls.Menu.Enable();
         transform.position = levels[0].transform.position;
         GetComponent<Image>().sprite = sprites[0];
         animationSpeed = ANIMATION_SPEED;
@@ -33,9 +39,10 @@ public class MenuCursor : MonoBehaviour
         Select();
     }
 
+
     private void Select()
     {
-        if (Input.GetButtonDown("Submit"))
+        if (controls.Menu.Accept.triggered)
         {
             levels[levelIndex].onClick.Invoke();
         }
@@ -43,21 +50,43 @@ public class MenuCursor : MonoBehaviour
 
     private void Movement()
     {
-        if (Input.GetButtonDown("Left"))
+        if (controls.Menu.Move.triggered)
         {
-            if (levelIndex != 0)
-            {
-                transform.position = levels[--levelIndex].transform.position;
-            }
-        }
+            float direction = controls.Menu.Move.ReadValue<float>();
 
-        else if (Input.GetButtonDown("Right"))
-        {
-            if (levelIndex != levels.Length - 1)
+            if (direction < 0)
             {
-                transform.position = levels[++levelIndex].transform.position;
+                if (levelIndex != 0)
+                {
+                    transform.position = levels[--levelIndex].transform.position;
+                }
+            }
+
+            else if (direction > 0)
+            {
+                if (levelIndex != levels.Length - 1)
+                {
+                    transform.position = levels[++levelIndex].transform.position;
+                }
             }
         }
+        
+
+        //if (Input.GetButtonDown("Left"))
+        //{
+        //    if (levelIndex != 0)
+        //    {
+        //        transform.position = levels[--levelIndex].transform.position;
+        //    }
+        //}
+
+        //else if (Input.GetButtonDown("Right"))
+        //{
+        //    if (levelIndex != levels.Length - 1)
+        //    {
+        //        transform.position = levels[++levelIndex].transform.position;
+        //    }
+        //}
     }
 
     private void Animate()
