@@ -5,30 +5,43 @@ using UnityEngine;
 public class MovingPlatform : MonoBehaviour
 {
 
-    float directionX;
-    float movementSpeed = 3f;
+    private Vector3 posA;
+    private Vector3 posB;
 
-    bool moveRight = true;
+    private Vector3 nextPos;
 
+    [SerializeField]
+    private float speed;
+
+    [SerializeField]
+    private Transform childTransform;
+
+    [SerializeField]
+    private Transform transformB;
+
+    void Start()
+    {
+        posA = childTransform.localPosition;
+        posB = transformB.localPosition;
+        nextPos = posB;
+    }
 
     // Update is called once per frame
     void Update()
     {
-        if(transform.position.x > 4f)
-        {
-            moveRight = false;
+        Move();
+    }
+
+    private void Move()
+    {
+        childTransform.localPosition = Vector3.MoveTowards(childTransform.localPosition, nextPos, speed * Time.deltaTime);
+        if (Vector3.Distance(childTransform.localPosition, nextPos) <= 0.1){
+            NextDestination();
         }
-        if (transform.position.x < -4f)
-        {
-            moveRight = true;
-        }
-        if (moveRight)
-        
-            transform.position = new Vector2(transform.position.x + movementSpeed + Time.deltaTime, transform.position.y);
-            else
-            transform.position = new Vector2(transform.position.x - movementSpeed + Time.deltaTime, transform.position.y);
+    }
 
-
-
+    private void NextDestination()
+    {
+        nextPos = nextPos != posA ? posA : posB;
     }
 }
