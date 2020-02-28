@@ -30,6 +30,9 @@ public class Movement : MonoBehaviour
         controls = new Controls();
     }
     // Start is called before the first frame update
+   
+       
+    
     void Start()
     {
         controls.Player.Enable();
@@ -140,6 +143,16 @@ public class Movement : MonoBehaviour
         //spikes
 
         if(collision.tag == "spikes")
+        {
+            //reload scene
+            Scene scene;
+            scene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(scene.name);
+        }
+
+        // Laser trap
+
+        if (collision.gameObject.name == "Laser Trap")
         {
             //reload scene
             Scene scene;
