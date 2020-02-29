@@ -25,6 +25,7 @@ public class Movement : MonoBehaviour
     bool isOnWall;
     int wallJumpDirection;
 
+   
     private void Awake()
     {
         controls = new Controls();
@@ -41,6 +42,7 @@ public class Movement : MonoBehaviour
         maxJumps = 2;
         numberOfJumps = maxJumps;
         isOnWall = false;
+        
     }
 
     // Update is called once per frame
@@ -145,6 +147,7 @@ public class Movement : MonoBehaviour
         if(collision.tag == "spikes")
         {
             //reload scene
+            
             Scene scene;
             scene = SceneManager.GetActiveScene();
             SceneManager.LoadScene(scene.name);
@@ -154,6 +157,7 @@ public class Movement : MonoBehaviour
 
         if (collision.gameObject.name == "Laser Trap")
         {
+            
             //reload scene
             Scene scene;
             scene = SceneManager.GetActiveScene();
@@ -191,4 +195,7 @@ public class Movement : MonoBehaviour
             isOnWall = false;
         }
     }
+
+    //death function
+   
 }
