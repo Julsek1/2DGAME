@@ -33,6 +33,14 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Cube"",
+                    ""type"": ""Button"",
+                    ""id"": ""e31a0d29-af21-4ae6-aeb0-87b9ae66b2f7"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -189,6 +197,28 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4aa10e14-c523-4629-9e33-8fe64f1fbefd"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Cube"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""23abd00b-c4d4-486b-bf68-97c0dd2360c9"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Cube"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -377,6 +407,7 @@ public class @Controls : IInputActionCollection, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
+        m_Player_Cube = m_Player.FindAction("Cube", throwIfNotFound: true);
         // Menu
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
         m_Menu_Move = m_Menu.FindAction("Move", throwIfNotFound: true);
@@ -432,12 +463,14 @@ public class @Controls : IInputActionCollection, IDisposable
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Move;
+    private readonly InputAction m_Player_Cube;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
         public PlayerActions(@Controls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Move => m_Wrapper.m_Player_Move;
+        public InputAction @Cube => m_Wrapper.m_Player_Cube;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -453,6 +486,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Move.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
                 @Move.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
                 @Move.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
+                @Cube.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCube;
+                @Cube.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCube;
+                @Cube.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCube;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -463,6 +499,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
+                @Cube.started += instance.OnCube;
+                @Cube.performed += instance.OnCube;
+                @Cube.canceled += instance.OnCube;
             }
         }
     }
@@ -512,6 +551,7 @@ public class @Controls : IInputActionCollection, IDisposable
     {
         void OnJump(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);
+        void OnCube(InputAction.CallbackContext context);
     }
     public interface IMenuActions
     {

@@ -20,6 +20,14 @@
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Cube",
+                    "type": "Button",
+                    "id": "e31a0d29-af21-4ae6-aeb0-87b9ae66b2f7",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -176,6 +184,28 @@
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "4aa10e14-c523-4629-9e33-8fe64f1fbefd",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Cube",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "23abd00b-c4d4-486b-bf68-97c0dd2360c9",
+                    "path": "<Keyboard>/leftShift",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Cube",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },

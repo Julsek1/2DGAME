@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class Movement : MonoBehaviour
 {
+    [SerializeField] Sprite[] testSprites;
     //Character
     Rigidbody2D rb;
 
@@ -21,19 +22,23 @@ public class Movement : MonoBehaviour
     int numberOfJumps;
     int maxJumps;
 
+    //Cube
+    bool wantsToTransform;
+    bool isCube;
+
     //Wall
     bool isOnWall;
     int wallJumpDirection;
 
-   
+
     private void Awake()
     {
         controls = new Controls();
     }
     // Start is called before the first frame update
-   
-       
-    
+
+
+
     void Start()
     {
         controls.Player.Enable();
@@ -42,7 +47,8 @@ public class Movement : MonoBehaviour
         maxJumps = 2;
         numberOfJumps = maxJumps;
         isOnWall = false;
-        
+        isCube = false;
+        wantsToTransform = false;
     }
 
     // Update is called once per frame
@@ -66,9 +72,14 @@ public class Movement : MonoBehaviour
 
         Move();
 
-        if (controls.Player.Jump.triggered)
+        if (controls.Player.Jump.triggered && !isCube)
         {
             isJumping = (numberOfJumps > 0);
+        }
+
+        if (controls.Player.Cube.triggered)
+        {
+            wantsToTransform = true;
         }
     }
 
@@ -79,6 +90,11 @@ public class Movement : MonoBehaviour
             Jump();
         }
 
+        if (wantsToTransform)
+        {
+            TransformToCube();
+        }
+
         //    ////better jump?
         //    //if (rb.velocity.y < 0 && !Input.GetButton("Jump"))
         //    //{
@@ -86,25 +102,47 @@ public class Movement : MonoBehaviour
         //    //}
     }
 
-    private void Move()
+    private void TransformToCube()
     {
-        float movement = controls.Player.Move.ReadValue<float>();
-        //float movement = Input.GetAxis("Horizontal");
-        if (movement != 0)
+        wantsToTransform = false;
+        isCube = !isCube;
+        //increase weight
+        if (isCube)
         {
-            GetComponent<SpriteRenderer>().flipX = (movement < 0);
-        }
-
-        if (isJumping)
-        {
-            rb.velocity = new Vector2(movement * moveSpeed / 2, rb.velocity.y);
+            GetComponent<SpriteRenderer>().sprite = testSprites[1];
+            rb.velocity = Vector2.zero;
+            rb.gravityScale = 2;
         }
 
         else
         {
-            rb.velocity = new Vector2(movement * moveSpeed, rb.velocity.y);
+            GetComponent<SpriteRenderer>().sprite = testSprites[0];
+            rb.gravityScale = 1;
         }
+        //no damage (except spikes)
+    }
 
+    private void Move()
+    {
+        if (!isCube)
+        {
+            float movement = controls.Player.Move.ReadValue<float>();
+            //float movement = Input.GetAxis("Horizontal");
+            if (movement != 0)
+            {
+                GetComponent<SpriteRenderer>().flipX = (movement < 0);
+            }
+
+            if (isJumping)
+            {
+                rb.velocity = new Vector2(movement * moveSpeed / 2, rb.velocity.y);
+            }
+
+            else
+            {
+                rb.velocity = new Vector2(movement * moveSpeed, rb.velocity.y);
+            }
+        }
     }
 
     public void Jump()
@@ -130,7 +168,6 @@ public class Movement : MonoBehaviour
             rb.velocity = Vector2.zero;
             rb.AddForce(new Vector2(0f, jumpHeight));
             //}
-            Debug.Log("Once");
         }
 
     }
@@ -144,10 +181,10 @@ public class Movement : MonoBehaviour
     {
         //spikes
 
-        if(collision.tag == "spikes")
+        if (collision.tag == "spikes")
         {
             //reload scene
-            
+
             Scene scene;
             scene = SceneManager.GetActiveScene();
             SceneManager.LoadScene(scene.name);
@@ -157,7 +194,7 @@ public class Movement : MonoBehaviour
 
         if (collision.gameObject.name == "Laser Trap")
         {
-            
+
             //reload scene
             Scene scene;
             scene = SceneManager.GetActiveScene();
@@ -165,7 +202,7 @@ public class Movement : MonoBehaviour
         }
 
 
-        if (collision.gameObject.name == "Floor")
+        if (collision.gameObject.name == "Floor" || collision.gameObject.name == "MovPlat")
         {
             RestoreJumps();
         }
@@ -188,14 +225,26 @@ public class Movement : MonoBehaviour
         //}
     }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.name == "MovPlat")
+        {
+            transform.parent = collision.transform;
+        }
+    }
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.name == "Wall")
         {
             isOnWall = false;
         }
+
+        if (collision.gameObject.name == "MovPlat")
+        {
+            transform.parent = null;
+        }
     }
 
     //death function
-   
+
 }
