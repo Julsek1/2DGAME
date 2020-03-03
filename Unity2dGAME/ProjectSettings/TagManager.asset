@@ -6,6 +6,8 @@ TagManager:
   tags:
   - spikes
   - MovPlat
+  - Floor
+  - Platform
   layers:
   - Default
   - TransparentFX

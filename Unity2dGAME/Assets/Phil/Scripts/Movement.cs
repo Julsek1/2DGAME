@@ -202,7 +202,7 @@ public class Movement : MonoBehaviour
         }
 
 
-        if (collision.gameObject.name == "Floor" || collision.gameObject.name == "MovPlat")
+        if (collision.gameObject.tag == "Floor" || collision.gameObject.tag == "Platform")
         {
             RestoreJumps();
         }
@@ -227,7 +227,7 @@ public class Movement : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.name == "MovPlat")
+        if (collision.gameObject.tag == "Platform")
         {
             transform.parent = collision.transform;
         }
@@ -239,7 +239,7 @@ public class Movement : MonoBehaviour
             isOnWall = false;
         }
 
-        if (collision.gameObject.name == "MovPlat")
+        if (collision.gameObject.tag == "Platform")
         {
             transform.parent = null;
         }
