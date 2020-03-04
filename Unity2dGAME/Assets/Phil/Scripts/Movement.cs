@@ -116,6 +116,7 @@ public class Movement : MonoBehaviour
             rb.velocity = Vector2.zero;
             rb.gravityScale = 2;
             anim.SetBool("isCube", true);
+            GetComponent<BoxCollider2D>().offset = new Vector2(0, 0.05f);
         }
 
         else
@@ -123,6 +124,7 @@ public class Movement : MonoBehaviour
             //GetComponent<SpriteRenderer>().sprite = testSprites[0];
             rb.gravityScale = 1;
             anim.SetBool("isCube", false);
+            GetComponent<BoxCollider2D>().offset = Vector2.zero;
         }
         //no damage (except spikes)
     }
