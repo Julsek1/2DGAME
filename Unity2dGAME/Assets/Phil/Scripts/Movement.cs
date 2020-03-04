@@ -30,6 +30,8 @@ public class Movement : MonoBehaviour
     bool isOnWall;
     int wallJumpDirection;
 
+    //Animation
+    Animator anim;
 
     private void Awake()
     {
@@ -49,6 +51,7 @@ public class Movement : MonoBehaviour
         isOnWall = false;
         isCube = false;
         wantsToTransform = false;
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -109,15 +112,17 @@ public class Movement : MonoBehaviour
         //increase weight
         if (isCube)
         {
-            GetComponent<SpriteRenderer>().sprite = testSprites[1];
+            //GetComponent<SpriteRenderer>().sprite = testSprites[1];
             rb.velocity = Vector2.zero;
             rb.gravityScale = 2;
+            anim.SetBool("isCube", true);
         }
 
         else
         {
-            GetComponent<SpriteRenderer>().sprite = testSprites[0];
+            //GetComponent<SpriteRenderer>().sprite = testSprites[0];
             rb.gravityScale = 1;
+            anim.SetBool("isCube", false);
         }
         //no damage (except spikes)
     }

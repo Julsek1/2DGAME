@@ -263,8 +263,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.1, y: 0.15}
-  m_Size: {x: 2.83, y: 1.31}
+  m_Offset: {x: -0.1, y: 0.37}
+  m_Size: {x: 2.53, y: 1.31}
   m_Direction: 1
 --- !u!1 &558499673
 GameObject:
@@ -558,6 +558,31 @@ Transform:
   m_Father: {fileID: 913373992}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1554028121 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4537672931072596999, guid: 54bb6a6d8b9d3ff478fd36700bc143f6,
+    type: 3}
+  m_PrefabInstance: {fileID: 907594433}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1554028122
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1554028121}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 766b84cc48cc2f94aa3330a30d0b1527, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1915727541
 GameObject:
   m_ObjectHideFlags: 0
