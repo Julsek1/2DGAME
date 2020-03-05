@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Bouncer : MonoBehaviour
 {
+    [SerializeField] float force;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +24,7 @@ public class Bouncer : MonoBehaviour
             //take velocity absolute and add it to the upward force
             //collision.GetComponent<Movement>().RestoreJumps();
             collision.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            collision.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 200);
+            collision.GetComponent<Rigidbody2D>().AddForce(Vector2.up * force);
         }
     }
 }

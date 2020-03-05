@@ -46,6 +46,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Floor
+    uniqueID: 2640578697
+    locked: 0
   - name: Player
     uniqueID: 704005409
     locked: 0
