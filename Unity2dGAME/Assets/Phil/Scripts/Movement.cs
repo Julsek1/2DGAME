@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class Movement : MonoBehaviour
 {
+    public ParticleSystem dust;
+
     [SerializeField] Sprite[] testSprites;
     //Character
     Rigidbody2D rb;
@@ -141,6 +143,7 @@ public class Movement : MonoBehaviour
             if (movement != 0)
             {
                 GetComponent<SpriteRenderer>().flipX = (movement < 0);
+                CreateDust();
             }
 
             //if (isJumping)
@@ -179,6 +182,7 @@ public class Movement : MonoBehaviour
             //rb.velocity = new Vector2(/*rb.velocity.x*/0f, 0f);
             rb.velocity = Vector2.zero;
             rb.AddForce(new Vector2(0f, jumpHeight));
+            CreateDust();
             //}
         }
 
@@ -260,6 +264,13 @@ public class Movement : MonoBehaviour
         }
     }
 
-    //death function
+    //dust ps
+
+    void CreateDust()
+    {
+        dust.Play();
+    }
+
+
 
 }
