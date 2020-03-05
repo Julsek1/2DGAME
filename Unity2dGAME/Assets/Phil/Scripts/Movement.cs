@@ -161,7 +161,7 @@ public class Movement : MonoBehaviour
 
         if (isJumping)
         {
-            anim.SetBool("isJumping", true);
+            anim.SetBool((numberOfJumps==2)?"isJumping":"isDoubleJumping", true);
 
             ////wall jump
             //if (isOnWall)
@@ -218,6 +218,7 @@ public class Movement : MonoBehaviour
         {
             RestoreJumps();
             anim.SetBool("isJumping", false);
+            anim.SetBool("isDoubleJumping", false);
 
         }
 
