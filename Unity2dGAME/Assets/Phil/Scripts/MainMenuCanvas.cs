@@ -1,20 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class MainMenuCanvas : MonoBehaviour
 {
     [SerializeField] GameObject[] panels;
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void EnablePanel(int index)
     {
@@ -24,5 +15,8 @@ public class MainMenuCanvas : MonoBehaviour
         }
 
         panels[index].SetActive(true);
+
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(EventSystem.current.firstSelectedGameObject);
     }
 }
