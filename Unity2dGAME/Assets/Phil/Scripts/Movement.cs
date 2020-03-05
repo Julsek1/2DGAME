@@ -60,6 +60,9 @@ public class Movement : MonoBehaviour
         isCube = false;
         wantsToTransform = false;
         anim = GetComponent<Animator>();
+        
+        //Screenshots
+        //ScreenCapture.CaptureScreenshot("World1.png");
     }
 
     // Update is called once per frame
@@ -80,6 +83,7 @@ public class Movement : MonoBehaviour
         //{
         //    this.GetComponent<SpriteRenderer>().color = Color.blue;
         //}
+
 
         Move();
 
@@ -160,7 +164,7 @@ public class Movement : MonoBehaviour
 
             //else
             //{
-                rb.velocity = new Vector2(movement * moveSpeed, rb.velocity.y);
+            rb.velocity = new Vector2(movement * moveSpeed, rb.velocity.y);
             //}
         }
     }
@@ -171,7 +175,7 @@ public class Movement : MonoBehaviour
 
         if (isJumping)
         {
-            anim.SetBool((numberOfJumps==2)?"isJumping":"isDoubleJumping", true);
+            anim.SetBool((numberOfJumps == 2) ? "isJumping" : "isDoubleJumping", true);
 
             ////wall jump
             //if (isOnWall)

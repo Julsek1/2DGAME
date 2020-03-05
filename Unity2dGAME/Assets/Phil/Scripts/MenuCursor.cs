@@ -6,14 +6,20 @@ using UnityEngine.UI;
 
 public class MenuCursor : MonoBehaviour
 {
-    [SerializeField] Button[] levels;
+    [SerializeField] Button[] buttons;
     [SerializeField] Sprite[] sprites;
+    [SerializeField] Text deathStats;
+    [SerializeField] Text timeStats;
+    [SerializeField] Image levelImage;
+    [SerializeField] Sprite[] worldImages;
 
     const float ANIMATION_SPEED = 0.25f;
     float animationSpeed;
     int spriteIndex;
-
     int levelIndex;
+
+    //stats
+    string time;
 
     Controls controls;
     private void Awake()
@@ -24,11 +30,14 @@ public class MenuCursor : MonoBehaviour
     void Start()
     {
         controls.Menu.Enable();
-        transform.position = levels[0].transform.position;
+        transform.position = buttons[0].transform.position;
         GetComponent<Image>().sprite = sprites[0];
         animationSpeed = ANIMATION_SPEED;
         spriteIndex = 0;
         levelIndex = 0;
+        deathStats.text = "";
+        timeStats.text = "";
+        levelImage.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -44,7 +53,7 @@ public class MenuCursor : MonoBehaviour
     {
         if (controls.Menu.Accept.triggered)
         {
-            levels[levelIndex].onClick.Invoke();
+            buttons[levelIndex].onClick.Invoke();
         }
     }
 
@@ -58,16 +67,45 @@ public class MenuCursor : MonoBehaviour
             {
                 if (levelIndex != 0)
                 {
-                    transform.position = levels[--levelIndex].transform.position;
+                    transform.position = buttons[--levelIndex].transform.position;
                 }
             }
 
             else if (direction > 0)
             {
-                if (levelIndex != levels.Length - 1)
+                if (levelIndex != buttons.Length - 1)
                 {
-                    transform.position = levels[++levelIndex].transform.position;
+                    transform.position = buttons[++levelIndex].transform.position;
                 }
+            }
+
+            if (levelIndex > 0 && levelIndex < buttons.Length - 1)
+            {
+                try
+                {
+                    deathStats.text = $"Total deaths: {GameManager.totalDeaths[levelIndex - 1]}	"+	
+                                      $"\n\nFewest deaths: {GameManager.fewestDeaths[levelIndex - 1]}";    
+                    
+                    timeStats.text = $"Total Time: {TimeSpan.FromSeconds(GameManager.totalTime[levelIndex - 1]).ToString(@"hh\:mm\:ss\.ff")}" +
+                                     $"\n\nFastest Time: {GameManager.fastestTime[levelIndex - 1]}";
+
+                    levelImage.gameObject.SetActive(true);
+                    levelImage.sprite = worldImages[levelIndex - 1];
+
+                }
+                catch
+                {
+                    deathStats.text = "";
+                    timeStats.text = "";
+                    levelImage.gameObject.SetActive(false);
+                }
+            }
+
+            else
+            {
+                deathStats.text = "";
+                timeStats.text = "";
+                levelImage.gameObject.SetActive(false);
             }
         }
         
