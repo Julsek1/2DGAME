@@ -7,6 +7,9 @@ using UnityEngine.SceneManagement;
 public class Movement : MonoBehaviour
 {
     public ParticleSystem dust;
+    public ParticleSystem cubeExplod;
+
+    AudioSource explosion;
 
     [SerializeField] Sprite[] testSprites;
     //Character
@@ -45,6 +48,9 @@ public class Movement : MonoBehaviour
 
     void Start()
     {
+        explosion = this.GetComponent<AudioSource>();
+
+
         controls.Player.Enable();
         rb = GetComponent<Rigidbody2D>();
         isJumping = false;
@@ -142,8 +148,9 @@ public class Movement : MonoBehaviour
             //float movement = Input.GetAxis("Horizontal");
             if (movement != 0)
             {
-                GetComponent<SpriteRenderer>().flipX = (movement < 0);
                 CreateDust();
+                GetComponent<SpriteRenderer>().flipX = (movement < 0);
+               
             }
 
             //if (isJumping)
@@ -197,13 +204,13 @@ public class Movement : MonoBehaviour
     {
         //spikes
 
-        if (collision.tag == "spikes")
+        if (collision.tag == "Hazard")
         {
             //reload scene
 
-            Scene scene;
-            scene = SceneManager.GetActiveScene();
-            SceneManager.LoadScene(scene.name);
+            Death();
+            Invoke("ReloadScene", 1);
+           
         }
 
         // Laser trap
@@ -212,6 +219,7 @@ public class Movement : MonoBehaviour
         {
 
             //reload scene
+            
             Scene scene;
             scene = SceneManager.GetActiveScene();
             SceneManager.LoadScene(scene.name);
@@ -271,6 +279,24 @@ public class Movement : MonoBehaviour
         dust.Play();
     }
 
+    //Death
 
+    public void Death()
+    {
+        controls.Disable();
+        rb.velocity = Vector2.zero;
+        rb.gravityScale = 0;
+        dust.Stop();
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        explosion.Play();
+        cubeExplod.Play();
+    }
+
+    public void ReloadScene()
+    {
+        Scene scene;
+        scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.name);
+    }
 
 }

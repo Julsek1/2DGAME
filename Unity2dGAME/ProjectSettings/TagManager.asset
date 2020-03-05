@@ -8,6 +8,7 @@ TagManager:
   - MovPlat
   - Floor
   - Platform
+  - Hazard
   layers:
   - Default
   - TransparentFX
