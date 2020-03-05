@@ -1,7 +1,10 @@
 fileFormatVersion: 2
 guid: 3c47032395b4fda4c962261d90df361c
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -1042648970495267669
+    second: Walk4_0
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -96,7 +99,28 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Walk4_0
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 14
+        width: 29
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bace3381944c781f0800000000000000
+      internalID: -1042648970495267669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

@@ -134,6 +134,9 @@ public class Movement : MonoBehaviour
         if (!isCube)
         {
             float movement = controls.Player.Move.ReadValue<float>();
+
+            anim.SetBool("isWalking", movement != 0);
+
             //float movement = Input.GetAxis("Horizontal");
             if (movement != 0)
             {
