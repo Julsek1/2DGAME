@@ -134,6 +134,9 @@ public class Movement : MonoBehaviour
         if (!isCube)
         {
             float movement = controls.Player.Move.ReadValue<float>();
+
+            anim.SetBool("isWalking", movement != 0);
+
             //float movement = Input.GetAxis("Horizontal");
             if (movement != 0)
             {
@@ -158,6 +161,8 @@ public class Movement : MonoBehaviour
 
         if (isJumping)
         {
+            anim.SetBool("isJumping", true);
+
             ////wall jump
             //if (isOnWall)
             //{
@@ -212,6 +217,8 @@ public class Movement : MonoBehaviour
         if (collision.gameObject.tag == "Floor" || collision.gameObject.tag == "Platform")
         {
             RestoreJumps();
+            anim.SetBool("isJumping", false);
+
         }
 
         else if (collision.gameObject.name == "Wall")
