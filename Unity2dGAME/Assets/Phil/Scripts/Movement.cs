@@ -140,15 +140,15 @@ public class Movement : MonoBehaviour
                 GetComponent<SpriteRenderer>().flipX = (movement < 0);
             }
 
-            if (isJumping)
-            {
-                rb.velocity = new Vector2(movement * moveSpeed / 2, rb.velocity.y);
-            }
+            //if (isJumping)
+            //{
+            //    rb.velocity = new Vector2(movement * moveSpeed / 2, rb.velocity.y);
+            //}
 
-            else
-            {
+            //else
+            //{
                 rb.velocity = new Vector2(movement * moveSpeed, rb.velocity.y);
-            }
+            //}
         }
     }
 
