@@ -41,6 +41,11 @@ public class GameManager : MonoBehaviour
         fewestDeaths.Add(10);
         totalTime.Add(412.88f);
         fastestTime.Add(12.52f);
+
+        totalDeaths.Add(500);
+        fewestDeaths.Add(9);
+        totalTime.Add(599f);
+        fastestTime.Add(2.45f);
     }
 
     private void Update()

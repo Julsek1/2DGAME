@@ -86,8 +86,8 @@ public class MenuCursor : MonoBehaviour
                     deathStats.text = $"Total deaths: {GameManager.totalDeaths[levelIndex - 1]}	"+	
                                       $"\n\nFewest deaths: {GameManager.fewestDeaths[levelIndex - 1]}";    
                     
-                    timeStats.text = $"Total Time: {TimeSpan.FromSeconds(GameManager.totalTime[levelIndex - 1]).ToString(@"hh\:mm\:ss\.ff")}" +
-                                     $"\n\nFastest Time: {GameManager.fastestTime[levelIndex - 1]}";
+                    timeStats.text = $"Total Time: {TimeSpan.FromSeconds(GameManager.totalTime[levelIndex - 1]).ToString(GetTimeFormat(GameManager.totalTime[levelIndex - 1]))}" +
+                                     $"\n\nFastest Time: {TimeSpan.FromSeconds(GameManager.fastestTime[levelIndex - 1]).ToString(GetTimeFormat(GameManager.fastestTime[levelIndex - 1]))}";
 
                     levelImage.gameObject.SetActive(true);
                     levelImage.sprite = worldImages[levelIndex - 1];
@@ -95,9 +95,11 @@ public class MenuCursor : MonoBehaviour
                 }
                 catch
                 {
-                    deathStats.text = "";
-                    timeStats.text = "";
-                    levelImage.gameObject.SetActive(false);
+                    deathStats.text = $"Total deaths: 0" +
+                                      $"\n\nFewest deaths: 0";
+                    timeStats.text = "Total Time: 0" +
+                                     $"\n\nFastest Time: 0";
+                    //levelImage.gameObject.SetActive(false);
                 }
             }
 
@@ -109,6 +111,35 @@ public class MenuCursor : MonoBehaviour
             }
         }
         
+        string GetTimeFormat(float time)
+        {
+            if (time >= 36000)
+            {
+                return @"hh\:mm\:ss\.ff";
+            }
+
+            else if (time < 36000 && time >= 3600)
+            {
+                return @"h\:mm\:ss\.ff";
+            }
+
+            else if (time >= 600)
+            {
+                return @"mm\:ss\.ff";
+            }
+
+            else if (time < 600 && time >= 60)
+            {
+                return @"m\:ss\.ff";
+            }
+
+            else if (time >= 10)
+            {
+                return @"ss\.ff";
+            }
+
+            return @"s\.ff";
+        }
 
         //if (Input.GetButtonDown("Left"))
         //{
