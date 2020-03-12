@@ -60,7 +60,7 @@ public class Movement : MonoBehaviour
         isCube = false;
         wantsToTransform = false;
         anim = GetComponent<Animator>();
-        
+
         //Screenshots
         //ScreenCapture.CaptureScreenshot("World1.png");
     }
@@ -154,7 +154,7 @@ public class Movement : MonoBehaviour
             {
                 CreateDust();
                 GetComponent<SpriteRenderer>().flipX = (movement < 0);
-               
+
             }
 
             //if (isJumping)
@@ -213,20 +213,23 @@ public class Movement : MonoBehaviour
             //reload scene
 
             Death();
-            Invoke("ReloadScene", 1);
-           
+            //Invoke("ReloadScene", 1);
+
         }
 
         // Laser trap
 
         if (collision.gameObject.name == "Laser Trap")
         {
-
+            if (!isCube)
+            {
+                Death();
+            }
             //reload scene
-            
-            Scene scene;
-            scene = SceneManager.GetActiveScene();
-            SceneManager.LoadScene(scene.name);
+
+            //Scene scene;
+            //scene = SceneManager.GetActiveScene();
+            //SceneManager.LoadScene(scene.name);
         }
 
 
@@ -294,6 +297,8 @@ public class Movement : MonoBehaviour
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
         explosion.Play();
         cubeExplod.Play();
+        //GameManager.instance.Death();
+        Invoke("ReloadScene", 1);
     }
 
     public void ReloadScene()
