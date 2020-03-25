@@ -9,7 +9,7 @@ public static class SaveSystem
     public static void SaveData(LevelData levelData)
     {
         BinaryFormatter formatter = new BinaryFormatter();
-        string path = Application.persistentDataPath + "/LevelData.sav";
+        string path = Path.Combine(Application.persistentDataPath,"LevelData.sav");
         FileStream stream = new FileStream(path, FileMode.Create);
 
         LevelData data = levelData;
@@ -22,7 +22,7 @@ public static class SaveSystem
 
     public static LevelData LoadData()
     {
-        string path = Application.persistentDataPath + "/LevelData.sav";
+        string path = Path.Combine(Application.persistentDataPath, "LevelData.sav");
 
         if (File.Exists(path))
         {
