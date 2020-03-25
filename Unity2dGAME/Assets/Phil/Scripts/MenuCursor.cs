@@ -89,8 +89,6 @@ public class MenuCursor : MonoBehaviour
                     timeStats.text = $"Total Time: {TimeSpan.FromSeconds(GameManager.totalTime[levelIndex - 1]).ToString(GetTimeFormat(GameManager.totalTime[levelIndex - 1]))}" +
                                      $"\n\nFastest Time: {TimeSpan.FromSeconds(GameManager.fastestTime[levelIndex - 1]).ToString(GetTimeFormat(GameManager.fastestTime[levelIndex - 1]))}";
 
-                    levelImage.gameObject.SetActive(true);
-                    levelImage.sprite = worldImages[levelIndex - 1];
 
                 }
                 catch
@@ -99,6 +97,16 @@ public class MenuCursor : MonoBehaviour
                                       $"\n\nFewest deaths: 0";
                     timeStats.text = "Total Time: 0" +
                                      $"\n\nFastest Time: 0";
+                }
+
+                try
+                {
+                    levelImage.gameObject.SetActive(true);
+                    levelImage.sprite = worldImages[levelIndex - 1];
+                }
+
+                catch
+                {
                     levelImage.gameObject.SetActive(false);
                 }
             }

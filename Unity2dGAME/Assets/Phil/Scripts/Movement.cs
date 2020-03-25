@@ -263,7 +263,7 @@ public class Movement : MonoBehaviour
             {
                 Debug.Log("You win");
                 Time.timeScale = 0;
-                GameManager.instance.PassedLevel();
+                GameManager.instance.PassedLevel(LevelLoader.instance.ReturnLevelIndex() - 1);
             }
 
             //else if(collision.gameObject.name == "Bouncer")

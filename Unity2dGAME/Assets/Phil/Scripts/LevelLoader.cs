@@ -43,6 +43,11 @@ public class LevelLoader : MonoBehaviour
         SceneManager.LoadScene(levelName);
     }
 
+    public int ReturnLevelIndex()
+    {
+        return SceneManager.GetActiveScene().buildIndex;
+    }
+
     public void Quit()
     {
         #if UNITY_EDITOR
