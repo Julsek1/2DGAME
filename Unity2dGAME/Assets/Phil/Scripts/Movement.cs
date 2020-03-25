@@ -261,7 +261,6 @@ public class Movement : MonoBehaviour
 
             if (collision.gameObject.tag == "Finish")
             {
-                Debug.Log("You win");
                 Time.timeScale = 0;
                 GameManager.instance.PassedLevel(LevelLoader.instance.ReturnLevelIndex() - 1);
             }

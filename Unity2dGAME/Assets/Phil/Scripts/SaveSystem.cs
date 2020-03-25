@@ -16,8 +16,6 @@ public static class SaveSystem
 
         formatter.Serialize(stream, data);
         stream.Close();
-
-        Debug.Log("Saved");
     }
 
     public static LevelData LoadData()
