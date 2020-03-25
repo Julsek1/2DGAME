@@ -38,9 +38,14 @@ public class Movement : MonoBehaviour
     //Animation
     Animator anim;
 
+    //Death
+    bool isDead;
+
+
     private void Awake()
     {
         controls = new Controls();
+        Time.timeScale = 1;
     }
     // Start is called before the first frame update
 
@@ -50,7 +55,7 @@ public class Movement : MonoBehaviour
     {
         explosion = this.GetComponent<AudioSource>();
 
-
+        isDead = false;
         controls.Player.Enable();
         rb = GetComponent<Rigidbody2D>();
         isJumping = false;
@@ -207,56 +212,65 @@ public class Movement : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //spikes
-
-        if (collision.tag == "Hazard")
+        if (!isDead)
         {
-            //reload scene
-
-            Death();
-            //Invoke("ReloadScene", 1);
-
-        }
-
-        // Laser trap
-
-        if (collision.gameObject.name == "Laser Trap")
-        {
-            if (!isCube)
+            if (collision.tag == "Hazard")
             {
+                //reload scene
+
                 Death();
+                //Invoke("ReloadScene", 1);
+
             }
-            //reload scene
 
-            //Scene scene;
-            //scene = SceneManager.GetActiveScene();
-            //SceneManager.LoadScene(scene.name);
-        }
+            // Laser trap
 
-
-        if (collision.gameObject.tag == "Floor" || collision.gameObject.tag == "Platform")
-        {
-            RestoreJumps();
-            anim.SetBool("isJumping", false);
-            anim.SetBool("isDoubleJumping", false);
-
-        }
-
-        else if (collision.gameObject.name == "Wall")
-        {
-            isOnWall = true;
-
-            if (numberOfJumps < 2)
+            if (collision.gameObject.name == "Laser Trap")
             {
-                numberOfJumps++;
+                if (!isCube)
+                {
+                    Death();
+                }
+                //reload scene
+
+                //Scene scene;
+                //scene = SceneManager.GetActiveScene();
+                //SceneManager.LoadScene(scene.name);
             }
 
-            wallJumpDirection = (this.transform.position.x > collision.transform.position.x) ? 1 : -1;
-        }
 
-        //else if(collision.gameObject.name == "Bouncer")
-        //{
-        //    rb.AddForce(new Vector2(0f, 200f));
-        //}
+            if (collision.gameObject.tag == "Floor" || collision.gameObject.tag == "Platform")
+            {
+                RestoreJumps();
+                anim.SetBool("isJumping", false);
+                anim.SetBool("isDoubleJumping", false);
+
+            }
+
+            if (collision.gameObject.name == "Wall")
+            {
+                isOnWall = true;
+
+                if (numberOfJumps < 2)
+                {
+                    numberOfJumps++;
+                }
+
+                wallJumpDirection = (this.transform.position.x > collision.transform.position.x) ? 1 : -1;
+            }
+
+            if (collision.gameObject.tag == "Finish")
+            {
+                Debug.Log("You win");
+                Time.timeScale = 0;
+                GameManager.instance.PassedLevel();
+            }
+
+            //else if(collision.gameObject.name == "Bouncer")
+            //{
+            //    rb.AddForce(new Vector2(0f, 200f));
+            //}
+        }
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -290,6 +304,7 @@ public class Movement : MonoBehaviour
 
     public void Death()
     {
+        isDead = true;
         controls.Disable();
         rb.velocity = Vector2.zero;
         rb.gravityScale = 0;
@@ -297,8 +312,11 @@ public class Movement : MonoBehaviour
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
         explosion.Play();
         cubeExplod.Play();
-        //GameManager.instance.Death();
-        Invoke("ReloadScene", 1);
+
+
+        //Swap these two
+        GameManager.instance.Death();
+        //Invoke("ReloadScene", 1);
     }
 
     public void ReloadScene()

@@ -99,7 +99,7 @@ public class MenuCursor : MonoBehaviour
                                       $"\n\nFewest deaths: 0";
                     timeStats.text = "Total Time: 0" +
                                      $"\n\nFastest Time: 0";
-                    //levelImage.gameObject.SetActive(false);
+                    levelImage.gameObject.SetActive(false);
                 }
             }
 
@@ -111,35 +111,7 @@ public class MenuCursor : MonoBehaviour
             }
         }
         
-        string GetTimeFormat(float time)
-        {
-            if (time >= 36000)
-            {
-                return @"hh\:mm\:ss\.ff";
-            }
-
-            else if (time < 36000 && time >= 3600)
-            {
-                return @"h\:mm\:ss\.ff";
-            }
-
-            else if (time >= 600)
-            {
-                return @"mm\:ss\.ff";
-            }
-
-            else if (time < 600 && time >= 60)
-            {
-                return @"m\:ss\.ff";
-            }
-
-            else if (time >= 10)
-            {
-                return @"ss\.ff";
-            }
-
-            return @"s\.ff";
-        }
+        
 
         //if (Input.GetButtonDown("Left"))
         //{
@@ -156,6 +128,36 @@ public class MenuCursor : MonoBehaviour
         //        transform.position = levels[++levelIndex].transform.position;
         //    }
         //}
+    }
+
+    private string GetTimeFormat(float time)
+    {
+        if (time >= 36000)
+        {
+            return @"hh\:mm\:ss\.ff";
+        }
+
+        else if (time < 36000 && time >= 3600)
+        {
+            return @"h\:mm\:ss\.ff";
+        }
+
+        else if (time >= 600)
+        {
+            return @"mm\:ss\.ff";
+        }
+
+        else if (time < 600 && time >= 60)
+        {
+            return @"m\:ss\.ff";
+        }
+
+        else if (time >= 10)
+        {
+            return @"ss\.ff";
+        }
+
+        return @"s\.ff";
     }
 
     private void Animate()

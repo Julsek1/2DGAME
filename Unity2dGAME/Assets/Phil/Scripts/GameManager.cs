@@ -18,7 +18,13 @@ public class GameManager : MonoBehaviour
     private float currentLevelTime;
 
     LevelLoader levelLoader;
+    
+    //Timer
     public Text timerTxt;
+    private bool timerOn;
+
+    //Victory
+
 
     private void Awake()
     {
@@ -27,12 +33,19 @@ public class GameManager : MonoBehaviour
             instance = this;
         }
 
-        DontDestroyOnLoad(this);
+        else
+        {
+            Destroy(instance.gameObject);
+            instance = this;
+        }
 
+        DontDestroyOnLoad(this);
     }
     // Start is called before the first frame update
     void Start()
     {
+        timerOn = true;
+
         currentLevelIndex = 0;
         currentLevelDeaths = 0;
         currentLevelTime = 0f;
@@ -50,7 +63,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (timerTxt)
+        if (timerTxt && timerOn)
         {
             currentLevelTime += Time.deltaTime;
             timerTxt.text = TimeSpan.FromSeconds(currentLevelTime).ToString(@"mm\:ss\.ff");
@@ -64,6 +77,18 @@ public class GameManager : MonoBehaviour
 
     public void PassedLevel()
     {
-        LevelLoader.instance.Load(++currentLevelIndex);
+        timerOn = false;
+        Goal.instance.DisplayVictoryScreen();
+        //LevelLoader.instance.Load(++currentLevelIndex);
+    }
+
+    public int GetCurrentLevelDeaths()
+    {
+        return currentLevelDeaths;
+    }
+
+    public float GetCurrentLevelTime()
+    {
+        return currentLevelTime;
     }
 }

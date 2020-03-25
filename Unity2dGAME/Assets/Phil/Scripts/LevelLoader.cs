@@ -13,11 +13,24 @@ public class LevelLoader : MonoBehaviour
         {
             instance = this;
         }
+
+        else
+        {
+            Destroy(instance.gameObject);
+            instance = this;
+        }
+
+        DontDestroyOnLoad(this);
     }
 
     public void ReloadCurrentScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void LoadNext()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void Load(int index)
