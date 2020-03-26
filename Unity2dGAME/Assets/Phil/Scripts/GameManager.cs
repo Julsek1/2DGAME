@@ -55,8 +55,6 @@ public class GameManager : MonoBehaviour
             data = new LevelData(fewestDeaths, fastestTime, totalDeaths, totalTime);
         }
 
-        timerOn = true;
-
         //currentLevelIndex = 0;
         currentLevelDeaths = 0;
         currentLevelTime = 0f;
@@ -129,6 +127,12 @@ public class GameManager : MonoBehaviour
     public float GetCurrentLevelTime()
     {
         return currentLevelTime;
+    }
+
+    public void StartTimer()
+    {
+        currentLevelTime = 0f;
+        timerOn = true;
     }
 
     public void SaveData()

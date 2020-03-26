@@ -53,6 +53,7 @@ public class Movement : MonoBehaviour
 
     void Start()
     {
+        GameManager.instance.StartTimer();
         explosion = this.GetComponent<AudioSource>();
 
         isDead = false;
@@ -67,7 +68,7 @@ public class Movement : MonoBehaviour
         anim = GetComponent<Animator>();
 
         //Screenshots
-        //ScreenCapture.CaptureScreenshot("World1.png");
+        ScreenCapture.CaptureScreenshot("Assets/Phil/Screenshot/World2.png");
     }
 
     // Update is called once per frame

@@ -226,6 +226,7 @@ MonoBehaviour:
   levelImage: {fileID: 1546018596}
   worldImages:
   - {fileID: 21300000, guid: c0afbcf3921b4264f8017437af0aac24, type: 3}
+  - {fileID: 21300000, guid: 37ae25538779a7f4f836b1be4fa130b2, type: 3}
 --- !u!114 &30016880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -338,7 +339,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 130936551}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1498551251}
+        m_MethodName: Load
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Level2
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &130936551
 MonoBehaviour:
   m_ObjectHideFlags: 0

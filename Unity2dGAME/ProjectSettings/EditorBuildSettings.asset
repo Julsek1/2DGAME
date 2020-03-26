@@ -12,6 +12,6 @@ EditorBuildSettings:
     path: Assets/Phil/Scenes/Level1.unity
     guid: 321423c7a2d04a14aa65725306667b38
   - enabled: 1
-    path: Assets/Phil/Scenes/Tester.unity
-    guid: 47f95ec27fd2326478a4fa8807643d77
+    path: Assets/Phil/Scenes/Level2.unity
+    guid: 8fb22c34e78160e42a355aec3aac1b49
   m_configObjects: {}
