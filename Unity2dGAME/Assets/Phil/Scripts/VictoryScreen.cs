@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class VictoryScreen : MonoBehaviour
 {
     [SerializeField] Text stats;
+    [SerializeField] Button next;
     private void OnEnable()
     {
         stats.text = $"Deaths: {GameManager.instance.GetCurrentLevelDeaths()}\n\n" +
@@ -19,7 +20,8 @@ public class VictoryScreen : MonoBehaviour
     private void SetSelectedButton()
     {
         EventSystem.current.SetSelectedGameObject(null);
-        EventSystem.current.SetSelectedGameObject(EventSystem.current.firstSelectedGameObject);
+        EventSystem.current.SetSelectedGameObject(next.gameObject);
+        next.OnSelect(new BaseEventData(EventSystem.current));
     }
     
 
