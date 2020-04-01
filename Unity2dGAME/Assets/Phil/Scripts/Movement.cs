@@ -41,6 +41,9 @@ public class Movement : MonoBehaviour
     //Death
     bool isDead;
 
+    //Pause
+    bool isPaused;
+    [SerializeField] GameObject pauseMenu;
 
     private void Awake()
     {
@@ -57,6 +60,7 @@ public class Movement : MonoBehaviour
         explosion = this.GetComponent<AudioSource>();
 
         isDead = false;
+        isPaused = false;
         controls.Player.Enable();
         rb = GetComponent<Rigidbody2D>();
         isJumping = false;
@@ -68,7 +72,7 @@ public class Movement : MonoBehaviour
         anim = GetComponent<Animator>();
 
         //Screenshots
-        //ScreenCapture.CaptureScreenshot("Assets/Phil/Screenshot/World2.png");
+        //ScreenCapture.CaptureScreenshot("Assets/Phil/Screenshot/WorldX.png");
     }
 
     // Update is called once per frame
@@ -101,6 +105,28 @@ public class Movement : MonoBehaviour
         if (controls.Player.Cube.triggered)
         {
             wantsToTransform = true;
+        }
+
+        if (controls.Player.Pause.triggered)
+        {
+            Pause();
+        }
+    }
+
+    public void Pause()
+    {
+        isPaused = !isPaused;
+
+        if (isPaused)
+        {
+            Time.timeScale = 0;
+            pauseMenu.gameObject.SetActive(true);
+        }
+
+        else
+        {
+            Time.timeScale = 1;
+            pauseMenu.gameObject.SetActive(false);
         }
     }
 

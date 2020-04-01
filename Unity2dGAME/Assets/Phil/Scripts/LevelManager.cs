@@ -11,6 +11,6 @@ public class LevelManager : MonoBehaviour
 
     public void LoadMenu()
     {
-        LevelLoader.instance.Load("MainMenu");
+        LevelLoader.instance.LoadMenu();
     }
 }

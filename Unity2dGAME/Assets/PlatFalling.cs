@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlatFalling : MonoBehaviour
 {
 
-    Rigidbody2D rigBod; 
+    Rigidbody2D rigBod;
 
     // Start is called before the first frame update
     void Start()
@@ -18,7 +18,6 @@ public class PlatFalling : MonoBehaviour
         if(collision.gameObject.name.Equals("Player")){
             Invoke("DropPlatform", 0.5f);
             Destroy(gameObject, 2f);
-                
         }
     }
 

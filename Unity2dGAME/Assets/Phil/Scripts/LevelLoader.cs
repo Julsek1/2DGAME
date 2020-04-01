@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class LevelLoader : MonoBehaviour
 {
+    [SerializeField] MainMenuCanvas mainMenuCanvas;
     public static LevelLoader instance;
 
     private void Awake()
@@ -41,6 +42,11 @@ public class LevelLoader : MonoBehaviour
     public void Load(string levelName)
     {
         SceneManager.LoadScene(levelName);
+    }
+
+    public void LoadMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 
     public int ReturnLevelIndex()

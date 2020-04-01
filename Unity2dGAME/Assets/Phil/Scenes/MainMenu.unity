@@ -1705,6 +1705,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cef87c429e1e24c4c9aae76c68ffd901, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainMenuCanvas: {fileID: 1747606826}
 --- !u!4 &1498551252
 Transform:
   m_ObjectHideFlags: 0
