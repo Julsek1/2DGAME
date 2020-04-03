@@ -49,7 +49,7 @@ public class Movement : MonoBehaviour
     {
         controls = new Controls();
         //Time.timeScale = 1;
-        DisableControls();
+        //DisableControls();
         EnableControls();
     }
     // Start is called before the first frame update

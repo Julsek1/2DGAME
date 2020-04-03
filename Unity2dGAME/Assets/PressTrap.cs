@@ -10,7 +10,10 @@ public class PressTrap : MonoBehaviour
     private Vector3 nextPos;
 
     [SerializeField]
-    private float speed;
+    private float waySpeed;
+
+    [SerializeField]
+    private float returnSpeed;
 
 
     [SerializeField]
@@ -36,10 +39,10 @@ public class PressTrap : MonoBehaviour
 
     private void Move()
     {
-        childTransform.localPosition = Vector3.MoveTowards(childTransform.localPosition, nextPos, speed * Time.deltaTime);
+        childTransform.localPosition = Vector3.MoveTowards(childTransform.localPosition, nextPos, waySpeed * Time.deltaTime);
         if (Vector3.Distance(childTransform.localPosition, nextPos) <= 0.1)
         {
-           
+            waySpeed = returnSpeed;
             NextDestination();
             
         }
@@ -47,7 +50,8 @@ public class PressTrap : MonoBehaviour
 
     private void NextDestination()
     {
-        
         nextPos = nextPos != posA ? posA : posB;
+
+
     }
 }

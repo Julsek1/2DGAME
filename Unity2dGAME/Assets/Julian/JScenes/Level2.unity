@@ -2698,7 +2698,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 982894d0718b90e41a0743af14abaccc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1.5
+  waySpeed: 1
+  returnSpeed: 0.5
   childTransform: {fileID: 148942886}
   transformB: {fileID: 266239949}
 --- !u!4 &2096635667
