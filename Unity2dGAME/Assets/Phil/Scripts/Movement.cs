@@ -48,7 +48,8 @@ public class Movement : MonoBehaviour
     private void Awake()
     {
         controls = new Controls();
-        Time.timeScale = 1;
+        //Time.timeScale = 1;
+        DisableControls();
     }
     // Start is called before the first frame update
 
@@ -56,12 +57,13 @@ public class Movement : MonoBehaviour
 
     void Start()
     {
-        GameManager.instance.StartTimer();
+        //GameManager.instance.StartTimer();//start level timer IMPLEMENT TRANSITION AND START AFTER TRANSITION
+
         explosion = this.GetComponent<AudioSource>();
 
         isDead = false;
         isPaused = false;
-        controls.Player.Enable();
+        //controls.Player.Enable();
         rb = GetComponent<Rigidbody2D>();
         isJumping = false;
         maxJumps = 2;
@@ -352,4 +354,16 @@ public class Movement : MonoBehaviour
         SceneManager.LoadScene(scene.name);
     }
 
+    public void EnableControls()
+    {
+        controls.Player.Enable();
+        Time.timeScale = 1;
+        GameManager.instance.StartTimer();
+    }
+
+    public void DisableControls()
+    {
+        controls.Player.Disable();
+        Time.timeScale = 0;
+    }
 }

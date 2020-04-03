@@ -720,6 +720,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 54bb6a6d8b9d3ff478fd36700bc143f6, type: 3}
+--- !u!114 &907594434 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4537672931072596994, guid: 54bb6a6d8b9d3ff478fd36700bc143f6,
+    type: 3}
+  m_PrefabInstance: {fileID: 907594433}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 159ecfef3cea9934d9ab6569a1466046, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1203169480
 GameObject:
   m_ObjectHideFlags: 0
@@ -1853,6 +1865,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1894274109, guid: 42d4490d050937346aa229f748981234, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 907594434}
     - target: {fileID: 5856614566935080506, guid: 42d4490d050937346aa229f748981234,
         type: 3}
       propertyPath: m_FontData.m_Font
