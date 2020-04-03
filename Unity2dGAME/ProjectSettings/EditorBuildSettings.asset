@@ -9,9 +9,9 @@ EditorBuildSettings:
     path: Assets/Phil/Scenes/MainMenu.unity
     guid: 4dc9f0f697977c440b40896cc6a3e8dd
   - enabled: 1
-    path: Assets/Phil/Scenes/Level1.unity
+    path: Assets/Phil/Scenes/Level1Phil.unity
     guid: 321423c7a2d04a14aa65725306667b38
   - enabled: 1
-    path: Assets/Phil/Scenes/Level2.unity
+    path: Assets/Phil/Scenes/Level2Phil.unity
     guid: 8fb22c34e78160e42a355aec3aac1b49
   m_configObjects: {}
