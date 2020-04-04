@@ -39,6 +39,8 @@ public class Wind : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+       
+
         switch (dir)
         {
             case EnumDirection.Left:
