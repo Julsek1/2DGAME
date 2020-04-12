@@ -12,7 +12,7 @@ public class Wind : MonoBehaviour
 
     Vector2 windPushDirection;
     Vector2 windMoveDirection;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,7 +39,7 @@ public class Wind : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+
 
         switch (dir)
         {
@@ -66,7 +66,10 @@ public class Wind : MonoBehaviour
     {
         if (collision.name == "Player" && collision.GetType() == typeof(BoxCollider2D))
         {
-            collision.GetComponent<Rigidbody2D>().AddForce(windPushDirection * power);
+            if (!collision.GetComponent<Movement>().GetIsCube())
+            {
+                collision.GetComponent<Rigidbody2D>().AddForce(windPushDirection * power);
+            }
         }
     }
 }

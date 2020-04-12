@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
 
         DontDestroyOnLoad(this);
     }
+
     // Start is called before the first frame update
     void Start()
     {

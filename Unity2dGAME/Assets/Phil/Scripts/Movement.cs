@@ -367,4 +367,9 @@ public class Movement : MonoBehaviour
         controls.Player.Disable();
         Time.timeScale = 0;
     }
+
+    public bool GetIsCube()
+    {
+        return isCube;
+    }
 }
