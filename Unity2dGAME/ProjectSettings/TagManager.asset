@@ -9,6 +9,7 @@ TagManager:
   - Floor
   - Platform
   - Hazard
+  - Laser
   layers:
   - Default
   - TransparentFX

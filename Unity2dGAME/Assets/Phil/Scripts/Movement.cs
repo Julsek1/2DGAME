@@ -255,7 +255,7 @@ public class Movement : MonoBehaviour
 
             // Laser trap
 
-            if (collision.gameObject.name == "Laser Trap")
+            if (collision.tag == "Laser")
             {
                 if (!isCube)
                 {
