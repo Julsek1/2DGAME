@@ -153,4 +153,9 @@ public class GameManager : MonoBehaviour
         totalDeaths = data.totalDeaths;
         totalTime = data.totalTime;
     }
+
+    public void ResetCurrentLevelDeaths()
+    {
+        currentLevelDeaths = 0;
+    }
 }

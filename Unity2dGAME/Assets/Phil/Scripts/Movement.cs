@@ -49,8 +49,9 @@ public class Movement : MonoBehaviour
     {
         controls = new Controls();
         //Time.timeScale = 1;
-        //DisableControls();
-        EnableControls();
+
+        DisableControls();
+        //EnableControls();
     }
     // Start is called before the first frame update
 
@@ -344,8 +345,8 @@ public class Movement : MonoBehaviour
 
 
         //Swap these two
-        //GameManager.instance.Death();
-        Invoke("ReloadScene", 1);
+        GameManager.instance.Death();
+        //Invoke("ReloadScene", 1);
     }
 
     public void ReloadScene()
@@ -359,7 +360,7 @@ public class Movement : MonoBehaviour
     {
         controls.Player.Enable();
         Time.timeScale = 1;
-        //GameManager.instance.StartTimer();
+        GameManager.instance.StartTimer();
     }
 
     public void DisableControls()

@@ -14,6 +14,7 @@ public class VictoryScreen : MonoBehaviour
         stats.text = $"Deaths: {GameManager.instance.GetCurrentLevelDeaths()}\n\n" +
                      $"Time: {TimeSpan.FromSeconds(GameManager.instance.GetCurrentLevelTime()).ToString(GetTimeFormat(GameManager.instance.GetCurrentLevelTime()))}";
 
+        GameManager.instance.ResetCurrentLevelDeaths();
         SetSelectedButton();
     }
 

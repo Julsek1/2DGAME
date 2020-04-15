@@ -27,7 +27,6 @@ public class LevelTransition : MonoBehaviour
                 countDown = false;
                 panel.SetActive(false);
                 player.EnableControls();
-
             }
 
             else

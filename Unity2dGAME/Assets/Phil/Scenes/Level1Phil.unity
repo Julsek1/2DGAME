@@ -4287,6 +4287,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 509499249, guid: 42d4490d050937346aa229f748981234, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 515849744}
+    - target: {fileID: 509499249, guid: 42d4490d050937346aa229f748981234, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 1645880752, guid: 42d4490d050937346aa229f748981234, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 907594434}
+    - target: {fileID: 1645880752, guid: 42d4490d050937346aa229f748981234, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Pause
+      objectReference: {fileID: 0}
     - target: {fileID: 1894274109, guid: 42d4490d050937346aa229f748981234, type: 3}
       propertyPath: player
       value: 
@@ -4410,7 +4426,7 @@ PrefabInstance:
     - target: {fileID: 5856614567034127900, guid: 42d4490d050937346aa229f748981234,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5856614567202849401, guid: 42d4490d050937346aa229f748981234,
         type: 3}
