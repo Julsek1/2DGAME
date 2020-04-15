@@ -4729,7 +4729,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 704005409
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: -5
   m_RenderMode: 0
   m_SortMode: 0
@@ -4907,7 +4907,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.2
+  m_Radius: 0.17
 --- !u!114 &4537672931072596994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4927,6 +4927,7 @@ MonoBehaviour:
   - {fileID: -7385459578604659673, guid: 8fa80154a3aa738458816c300f2fab23, type: 3}
   moveSpeed: 3
   jumpHeight: 300
+  pauseMenu: {fileID: 0}
 --- !u!114 &-4886878480963875228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5166,7 +5167,7 @@ PrefabInstance:
     - target: {fileID: 8460510973501049867, guid: 7d0387db426f0934d93d0b7c84bd8043,
         type: 3}
       propertyPath: m_SortingLayer
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8460510973501049867, guid: 7d0387db426f0934d93d0b7c84bd8043,
         type: 3}
