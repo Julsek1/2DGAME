@@ -2166,6 +2166,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4537672931072596994, guid: 54bb6a6d8b9d3ff478fd36700bc143f6,
+        type: 3}
+      propertyPath: pauseMenu
+      value: 
+      objectReference: {fileID: 5856614567980030267}
     - target: {fileID: 4537672931072596997, guid: 54bb6a6d8b9d3ff478fd36700bc143f6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5091,6 +5096,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 509499249, guid: 42d4490d050937346aa229f748981234, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 515849744}
+    - target: {fileID: 509499249, guid: 42d4490d050937346aa229f748981234, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 1645880752, guid: 42d4490d050937346aa229f748981234, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 907594434}
+    - target: {fileID: 1645880752, guid: 42d4490d050937346aa229f748981234, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Pause
+      objectReference: {fileID: 0}
     - target: {fileID: 1894274109, guid: 42d4490d050937346aa229f748981234, type: 3}
       propertyPath: player
       value: 
@@ -5219,7 +5240,7 @@ PrefabInstance:
     - target: {fileID: 5856614567202849401, guid: 42d4490d050937346aa229f748981234,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5856614567603830331, guid: 42d4490d050937346aa229f748981234,
         type: 3}
@@ -5233,6 +5254,12 @@ PrefabInstance:
       objectReference: {fileID: 515849744}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 42d4490d050937346aa229f748981234, type: 3}
+--- !u!1 &5856614567980030267 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1994014943, guid: 42d4490d050937346aa229f748981234,
+    type: 3}
+  m_PrefabInstance: {fileID: 5856614567980030266}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7305060846277033101
 PrefabInstance:
   m_ObjectHideFlags: 0

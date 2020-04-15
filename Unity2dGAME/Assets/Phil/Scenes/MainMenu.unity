@@ -307,6 +307,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: bf200c671a3e8ed4891efddd04900c5c, type: 3}
   - {fileID: 21300000, guid: a0f4521a1890547478ab6f677ec42cdb, type: 3}
   - {fileID: 21300000, guid: 2dd85c556ddc0624abe586f3296834d1, type: 3}
+  world: 1
 --- !u!114 &30016880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1512,6 +1513,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: c51c954001a58944182854ee6aca073e, type: 3}
   - {fileID: 21300000, guid: 09bd2c805189d69468296e18f052a2fa, type: 3}
   - {fileID: 21300000, guid: ad2d167734b278a4789f3d8516268f32, type: 3}
+  world: 2
 --- !u!114 &651931627
 MonoBehaviour:
   m_ObjectHideFlags: 0

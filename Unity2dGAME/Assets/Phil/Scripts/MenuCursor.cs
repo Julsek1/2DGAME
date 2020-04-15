@@ -12,6 +12,7 @@ public class MenuCursor : MonoBehaviour
     [SerializeField] Text timeStats;
     [SerializeField] Image levelImage;
     [SerializeField] Sprite[] worldImages;
+    [SerializeField] int world;
 
     const float ANIMATION_SPEED = 0.25f;
     float animationSpeed;
@@ -38,6 +39,7 @@ public class MenuCursor : MonoBehaviour
         deathStats.text = "";
         timeStats.text = "";
         levelImage.gameObject.SetActive(false);
+        world = (world - 1) * 5;
     }
 
     // Update is called once per frame
@@ -83,11 +85,11 @@ public class MenuCursor : MonoBehaviour
             {
                 try
                 {
-                    deathStats.text = $"Total deaths: {GameManager.totalDeaths[levelIndex - 1]}	"+	
-                                      $"\n\nFewest deaths: {GameManager.fewestDeaths[levelIndex - 1]}";    
+                    deathStats.text = $"Total deaths: {GameManager.totalDeaths[levelIndex - 1 + world]}	"+	
+                                      $"\n\nFewest deaths: {GameManager.fewestDeaths[levelIndex - 1 + world]}";    
                     
-                    timeStats.text = $"Total Time: {TimeSpan.FromSeconds(GameManager.totalTime[levelIndex - 1]).ToString(GetTimeFormat(GameManager.totalTime[levelIndex - 1]))}" +
-                                     $"\n\nFastest Time: {TimeSpan.FromSeconds(GameManager.fastestTime[levelIndex - 1]).ToString(GetTimeFormat(GameManager.fastestTime[levelIndex - 1]))}";
+                    timeStats.text = $"Total Time: {TimeSpan.FromSeconds(GameManager.totalTime[levelIndex - 1 + world]).ToString(GetTimeFormat(GameManager.totalTime[levelIndex - 1 + world]))}" +
+                                     $"\n\nFastest Time: {TimeSpan.FromSeconds(GameManager.fastestTime[levelIndex - 1 + world]).ToString(GetTimeFormat(GameManager.fastestTime[levelIndex - 1 + world]))}";
 
 
                 }
