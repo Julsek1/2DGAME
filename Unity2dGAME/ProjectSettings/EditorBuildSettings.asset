@@ -9,9 +9,33 @@ EditorBuildSettings:
     path: Assets/Phil/Scenes/MainMenu.unity
     guid: 4dc9f0f697977c440b40896cc6a3e8dd
   - enabled: 1
-    path: Assets/Phil/Scenes/Test/LevelTest1Phil.unity
-    guid: 321423c7a2d04a14aa65725306667b38
+    path: Assets/Julian/JScenes/Level1.unity
+    guid: dd3b5ffa0250f134a84156e60cfb1158
   - enabled: 1
-    path: Assets/Phil/Scenes/Test/LevelTest2Phil.unity
-    guid: 8fb22c34e78160e42a355aec3aac1b49
+    path: Assets/Julian/JScenes/Level2.unity
+    guid: aa9e70e21eb9fa8439a0aa691aa179b3
+  - enabled: 1
+    path: Assets/Julian/JScenes/Level3.unity
+    guid: ac2216b60c8d6dc429f5a605646d33ad
+  - enabled: 1
+    path: Assets/Julian/JScenes/Level4.unity
+    guid: 6a779ae1ae02cd14cb46ad038907167d
+  - enabled: 1
+    path: Assets/Julian/JScenes/Level5.unity
+    guid: e2c4562d8fc6bd1428a82888883fc386
+  - enabled: 1
+    path: Assets/Phil/Scenes/Level1Phil.unity
+    guid: 57ce102f04f201d48a9c81f3e06af398
+  - enabled: 1
+    path: Assets/Phil/Scenes/Level2Phil.unity
+    guid: 299add226e5fa5e4b82fa6888d062b49
+  - enabled: 1
+    path: Assets/Phil/Scenes/Level3Phil.unity
+    guid: 46d7e73534e39be44a53c8bb6b98f7a7
+  - enabled: 1
+    path: Assets/Phil/Scenes/Level4Phil.unity
+    guid: b2edac5d8b0009f4ba387dbf313ede5b
+  - enabled: 1
+    path: Assets/Phil/Scenes/Level5Phil.unity
+    guid: 2ba7b0adae323e04988b6e72504e5a44
   m_configObjects: {}

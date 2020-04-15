@@ -75,7 +75,7 @@ public class Movement : MonoBehaviour
         anim = GetComponent<Animator>();
 
         //Screenshots
-        //ScreenCapture.CaptureScreenshot("Assets/Phil/Screenshot/WorldX.png");
+        //ScreenCapture.CaptureScreenshot("Assets/Phil/Screenshot/World3Level1.png");
     }
 
     // Update is called once per frame
